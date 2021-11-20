@@ -9,6 +9,10 @@ import { UserSubscriber } from './subscribers/user.subscriber';
   imports: [TypeOrmModule.forFeature([User])],
   controllers: [UserController],
   providers: [UserService, UserSubscriber],
-  exports: [],
+  exports: [UserService],
 })
-export class NestUsersModule {}
+export class NestUsersModule {
+  constructor(private userService: UserService) {
+    userService.findAll().then((users) => console.log('All users:', users));
+  }
+}
