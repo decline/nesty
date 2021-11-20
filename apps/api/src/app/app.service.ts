@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
 import { Message } from '@angular-nest/api-interfaces';
+import { Injectable } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
