@@ -32,14 +32,13 @@ export class UserService {
     await this.usersRepository.delete(id);
   }
 
-  async createMany(users: User[]) {
+  async create(user: User) {
     const queryRunner = this.connection.createQueryRunner();
 
     await queryRunner.connect();
     await queryRunner.startTransaction();
     try {
-      await queryRunner.manager.save(users[0]);
-      await queryRunner.manager.save(users[1]);
+      await queryRunner.manager.save(user);
 
       await queryRunner.commitTransaction();
     } catch (err) {
@@ -51,10 +50,9 @@ export class UserService {
     }
   }
 
-  async createManySimple(users: User[]) {
+  async createSimple(user: User) {
     await this.connection.transaction(async (manager) => {
-      await manager.save(users[0]);
-      await manager.save(users[1]);
+      await manager.save(user);
     });
   }
 }

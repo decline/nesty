@@ -13,6 +13,14 @@ import { UserSubscriber } from './subscribers/user.subscriber';
 })
 export class UserApiModule {
   constructor(private userService: UserService) {
-    userService.findAll().then((users) => console.log('All users:', users));
+    // const user = new User();
+    // user.userName = 'decline';
+    // user.password = 'test';
+    // user.firstName = 'Dominik';
+    // user.lastName = 'Huppmann';
+    //
+    // userService.create(user);
+    //
+    // userService.findAll().then((users) => console.log('All users:', users));
   }
 }
