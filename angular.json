@@ -68,6 +68,29 @@
       },
       "tags": []
     },
+    "auth-api": {
+      "root": "libs/auth/api",
+      "sourceRoot": "libs/auth/api/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/auth/api/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/auth/api"],
+          "options": {
+            "jestConfig": "libs/auth/api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "nesty": {
       "projectType": "application",
       "root": "apps/nesty",

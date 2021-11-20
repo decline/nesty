@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@angular-nest/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@angular-nest/auth/api": ["libs/auth/api/src/index.ts"],
       "@angular-nest/user/api": ["libs/user/api/src/index.ts"]
     }
   },
