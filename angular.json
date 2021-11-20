@@ -51,7 +51,7 @@
           }
         }
       },
-      "tags": []
+      "tags": ["scope:app"]
     },
     "api-interfaces": {
       "root": "libs/api-interfaces",
@@ -66,7 +66,7 @@
           }
         }
       },
-      "tags": []
+      "tags": ["scope:shared"]
     },
     "auth-api": {
       "root": "libs/auth/api",
@@ -89,7 +89,7 @@
           }
         }
       },
-      "tags": []
+      "tags": ["type:api", "scope:auth"]
     },
     "nesty": {
       "projectType": "application",
@@ -183,7 +183,7 @@
           }
         }
       },
-      "tags": []
+      "tags": ["scope:app"]
     },
     "nesty-e2e": {
       "root": "apps/nesty-e2e",
@@ -211,7 +211,7 @@
           }
         }
       },
-      "tags": [],
+      "tags": ["scope:e2e"],
       "implicitDependencies": ["nesty"]
     },
     "user-api": {
@@ -235,7 +235,7 @@
           }
         }
       },
-      "tags": []
+      "tags": ["type:api", "scope:user"]
     }
   }
 }

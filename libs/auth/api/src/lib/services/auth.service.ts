@@ -3,5 +3,5 @@ import { UserService } from '@angular-nest/user/api';
 
 @Injectable()
 export class AuthService {
-  constructor(private usersService: UserService) {}
+  constructor(private userService: UserService) {}
 }
