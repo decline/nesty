@@ -68,6 +68,29 @@
       },
       "tags": []
     },
+    "nest-users": {
+      "root": "libs/nest/users",
+      "sourceRoot": "libs/nest/users/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/nest/users/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/nest/users"],
+          "options": {
+            "jestConfig": "libs/nest/users/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "nesty": {
       "projectType": "application",
       "root": "apps/nesty",

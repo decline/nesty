@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular-nest/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@angular-nest/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@angular-nest/nest/users": ["libs/nest/users/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
