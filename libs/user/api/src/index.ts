@@ -1,4 +1,4 @@
-export * from './lib/nest-users.module';
+export * from './lib/user-api.module';
 
 export { UserController } from './lib/controllers/user.controller';
 export { User } from './lib/entities/user.entity';

@@ -4,7 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';
-import { NestUsersModule } from '@angular-nest/nest/users';
+import { UserApiModule } from '@angular-nest/user/api';
 
 @Module({
   imports: [
@@ -16,7 +16,7 @@ import { NestUsersModule } from '@angular-nest/nest/users';
         autoLoadEntities: true,
       }),
     }),
-    NestUsersModule,
+    UserApiModule,
   ],
   controllers: [AppController],
   providers: [AppService],

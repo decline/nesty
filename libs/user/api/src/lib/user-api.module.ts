@@ -11,7 +11,7 @@ import { UserSubscriber } from './subscribers/user.subscriber';
   providers: [UserService, UserSubscriber],
   exports: [UserService],
 })
-export class NestUsersModule {
+export class UserApiModule {
   constructor(private userService: UserService) {
     userService.findAll().then((users) => console.log('All users:', users));
   }
