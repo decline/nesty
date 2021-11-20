@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';
 import { UserApiModule } from '@angular-nest/user/api';
+import { AuthApiModule } from '@angular-nest/auth/api';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { UserApiModule } from '@angular-nest/user/api';
         autoLoadEntities: true,
       }),
     }),
+    AuthApiModule,
     UserApiModule,
   ],
   controllers: [AppController],
