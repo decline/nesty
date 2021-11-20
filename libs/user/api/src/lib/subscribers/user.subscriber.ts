@@ -1,9 +1,4 @@
-import {
-  Connection,
-  EntitySubscriberInterface,
-  EventSubscriber,
-  InsertEvent,
-} from 'typeorm';
+import { Connection, EntitySubscriberInterface, EventSubscriber, InsertEvent } from 'typeorm';
 import { User } from '../entities/user.entity';
 
 @EventSubscriber()

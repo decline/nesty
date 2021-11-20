@@ -19,10 +19,7 @@ export class UserService {
     return this.usersRepository.findOne(id);
   }
 
-  findOneByUsernameAndPassword(
-    userName: string,
-    password: string
-  ): Promise<User> {
+  findOneByUsernameAndPassword(userName: string, password: string): Promise<User> {
     return this.usersRepository.findOne({
       where: <User>{ userName, password },
     });

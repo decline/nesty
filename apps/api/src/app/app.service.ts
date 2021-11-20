@@ -6,8 +6,6 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class AppService {
   getData(): Observable<Message> {
-    return of({ message: 'Welcome to api!' }).pipe(
-      map((data) => ({ ...data, message: data.message.toLowerCase() }))
-    );
+    return of({ message: 'Welcome to api!' }).pipe(map((data) => ({ ...data, message: data.message.toLowerCase() })));
   }
 }
