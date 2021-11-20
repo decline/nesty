@@ -11,6 +11,8 @@ import { NestUsersModule } from '@angular-nest/nest/users';
     TypeOrmModule.forRootAsync({
       useFactory: async () => ({
         ...(await getConnectionOptions()),
+        entities: [],
+        migrations: [],
         autoLoadEntities: true,
       }),
     }),
