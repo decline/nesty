@@ -48,11 +48,11 @@
               },
               {
                 "sourceTag": "scope:auth",
-                "onlyDependOnLibsWithTags": ["scope:auth", "scope:shared", "scope:user"]
+                "onlyDependOnLibsWithTags": ["scope:auth", "scope:user"]
               },
               {
                 "sourceTag": "scope:user",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:user"]
+                "onlyDependOnLibsWithTags": ["scope:user"]
               }
             ]
           }
