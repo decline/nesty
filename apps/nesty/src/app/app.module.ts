@@ -7,7 +7,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, authRootPath } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found.component';
@@ -27,7 +27,7 @@ import { NotFoundComponent } from './not-found.component';
     }),
 
     AppRoutingModule,
-    AuthDataAccessModule,
+    AuthDataAccessModule.forRoot(authRootPath),
   ],
   providers: [],
   bootstrap: [AppComponent],

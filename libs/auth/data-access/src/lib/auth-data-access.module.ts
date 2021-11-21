@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AuthEffects } from './+state/auth.effects';
 import * as fromAuth from './+state/auth.reducer';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { AUTH_ROOT_PATH } from './providers';
 
 @NgModule({
   imports: [
@@ -22,4 +23,16 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     },
   ],
 })
-export class AuthDataAccessModule {}
+export class AuthDataAccessModule {
+  static forRoot(authRootPath: string): ModuleWithProviders<AuthDataAccessModule> {
+    return {
+      ngModule: AuthDataAccessModule,
+      providers: [
+        {
+          provide: AUTH_ROOT_PATH,
+          useValue: authRootPath,
+        },
+      ],
+    };
+  }
+}
