@@ -1,7 +1,6 @@
-import { Message } from '@angular-nest/api-interfaces';
 import { Controller, Get, Param } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { AppService } from './app.service';
+import { AppService, Message } from './app.service';
 
 @Controller()
 export class AppController {

@@ -1,1 +1,1 @@
-export { JwtPayload } from './lib/jwt';
+export { JwtPayload, JwtLoginResponse } from './lib/jwt';

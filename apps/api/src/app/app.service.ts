@@ -1,7 +1,10 @@
-import { Message } from '@angular-nest/api-interfaces';
 import { Injectable } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+export interface Message {
+  message: string;
+}
 
 @Injectable()
 export class AppService {

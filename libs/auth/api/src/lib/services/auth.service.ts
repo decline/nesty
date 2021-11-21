@@ -1,4 +1,4 @@
-import { JwtPayload } from '@angular-nest/auth/interfaces';
+import { JwtLoginResponse, JwtPayload } from '@angular-nest/auth/interfaces';
 import { User, UserService } from '@angular-nest/user/api';
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
@@ -18,8 +18,8 @@ export class AuthService {
 
   async login(user: User) {
     const payload: JwtPayload = { username: user.userName, sub: user.id };
-    return {
-      access_token: this.jwtService.sign(payload),
+    return <JwtLoginResponse>{
+      accessToken: this.jwtService.sign(payload),
     };
   }
 }
