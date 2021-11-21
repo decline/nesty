@@ -5,3 +5,5 @@ export const login = createAction('[Auth] Login', props<{ username: string; pass
 export const loginSuccess = createAction('[Auth] Login Success', props<{ jwt: string }>());
 
 export const loginFailure = createAction('[Auth] Login Failure', props<{ error: any }>());
+
+export const revokeAuthentication = createAction('[Auth] Revoke Authentication');

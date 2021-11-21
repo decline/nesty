@@ -5,7 +5,8 @@ import * as AuthActions from './auth.actions';
 export const AUTH_FEATURE_KEY = 'auth';
 
 export interface State {
-  loggingIn: boolean; // if currently logging in
+  authenticated?: boolean; // if user is authenticated
+  authenticating: boolean; // if authentication is in progress
   jwt?: string;
   error?: string | null; // last known error (if any)
 }
@@ -15,14 +16,15 @@ export interface AuthPartialState {
 }
 
 export const initialState: State = {
-  loggingIn: false,
+  authenticating: false,
 };
 
 const authReducer = createReducer(
   initialState,
-  on(AuthActions.login, (state) => ({ ...state, loggingIn: true })),
-  on(AuthActions.loginSuccess, (state, { jwt }) => ({ ...state, loggingIn: false, jwt })),
-  on(AuthActions.loginFailure, (state, { error }) => ({ ...state, loggingIn: false, error }))
+  on(AuthActions.login, (state) => ({ ...state, authenticating: true })),
+  on(AuthActions.loginSuccess, (state, { jwt }) => ({ ...state, authenticated: true, authenticating: false, jwt })),
+  on(AuthActions.loginFailure, (state, { error }) => ({ ...state, authenticating: false, error })),
+  on(AuthActions.revokeAuthentication, (state) => ({ ...state, authenticated: false }))
 );
 
 export function reducer(state: State | undefined, action: Action) {
