@@ -91,6 +91,21 @@
       },
       "tags": ["type:api", "scope:auth"]
     },
+    "auth-interfaces": {
+      "root": "libs/auth/interfaces",
+      "sourceRoot": "libs/auth/interfaces/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/auth/interfaces/**/*.ts"]
+          }
+        }
+      },
+      "tags": ["type:interfaces", "scope:auth"]
+    },
     "nesty": {
       "projectType": "application",
       "root": "apps/nesty",
@@ -168,10 +183,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/nesty/src/**/*.ts",
-              "apps/nesty/src/**/*.html"
-            ]
+            "lintFilePatterns": ["apps/nesty/src/**/*.ts", "apps/nesty/src/**/*.html"]
           }
         },
         "test": {

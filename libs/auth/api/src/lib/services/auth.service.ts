@@ -1,7 +1,7 @@
+import { JwtPayload } from '@angular-nest/auth/interfaces';
 import { User, UserService } from '@angular-nest/user/api';
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { JwtPayload } from './jwt.strategy';
 
 @Injectable()
 export class AuthService {
