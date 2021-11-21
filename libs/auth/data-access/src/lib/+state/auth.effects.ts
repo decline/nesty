@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import { map, tap } from 'rxjs';
@@ -17,7 +18,9 @@ export class AuthEffects {
         run: (action) =>
           this.authHttpService
             .login(action.username, action.password)
-            .pipe(map((response) => AuthActions.loginSuccess({ jwt: response.accessToken }))),
+            .pipe(
+              map((response) => AuthActions.loginSuccess({ jwt: response.accessToken, redirectTo: action.redirectTo }))
+            ),
         onError: (action, error) => {
           console.error('Error', error);
           return AuthActions.loginFailure({ error });
@@ -26,11 +29,19 @@ export class AuthEffects {
     )
   );
 
-  storeToken$ = createEffect(
+  loginSuccess$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.loginSuccess),
-        tap((action) => localStorage.setItem(this.tokenStorageKey, action.jwt))
+        tap(async (action) => {
+          // store token in storage
+          localStorage.setItem(this.tokenStorageKey, action.jwt);
+
+          // when redirect param was set, navigate to return url
+          if (action.redirectTo) {
+            await this.router.navigateByUrl(action.redirectTo);
+          }
+        })
       ),
     { dispatch: false }
   );
@@ -52,8 +63,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.info),
       fetch({
-        run: () =>
-          this.authHttpService.info().pipe(map((response) => AuthActions.infoSuccess({ jwtPayload: response }))),
+        run: () => this.authHttpService.info().pipe(map((response) => AuthActions.infoSuccess({ user: response }))),
         onError: (action, error) => {
           console.error('Error', error);
           return AuthActions.infoFailure({ error });
@@ -62,5 +72,5 @@ export class AuthEffects {
     )
   );
 
-  constructor(private readonly actions$: Actions, private authHttpService: AuthHttpService) {}
+  constructor(private readonly actions$: Actions, private authHttpService: AuthHttpService, private router: Router) {}
 }

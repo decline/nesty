@@ -1,6 +1,7 @@
 import { AuthGuard } from '@angular-nest/auth/data-access';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './home.component';
 import { NotFoundComponent } from './not-found.component';
 
 export const authRootPath = 'auth';
@@ -13,11 +14,11 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'auth',
+        redirectTo: 'home',
       },
       {
-        path: 'foo',
-        component: NotFoundComponent,
+        path: 'home',
+        component: HomeComponent,
       },
     ],
   },

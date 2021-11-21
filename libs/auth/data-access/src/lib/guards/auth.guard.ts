@@ -4,6 +4,8 @@ import { filter, map, Observable } from 'rxjs';
 import { AuthFacade } from '../+state/auth.facade';
 import { AUTH_ROOT_PATH } from '../providers';
 
+export const queryParamRedirectToAfterLogin = 'redirectTo';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -22,7 +24,13 @@ export class AuthGuard implements CanActivate {
 
     return this.authFacade.authenticated$.pipe(
       filter((authenticated) => authenticated !== null && authenticated !== undefined),
-      map((authenticated) => (authenticated ? true : this.router.createUrlTree([this.authRootPath, 'login'])))
+      map((authenticated) =>
+        authenticated
+          ? true
+          : this.router.createUrlTree([this.authRootPath, 'login'], {
+              queryParams: { [queryParamRedirectToAfterLogin]: state.url },
+            })
+      )
     );
   }
 }

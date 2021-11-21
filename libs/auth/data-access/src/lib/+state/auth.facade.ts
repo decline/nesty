@@ -13,8 +13,8 @@ export class AuthFacade {
 
   constructor(private readonly store: Store) {}
 
-  login(username: string, password: string) {
-    this.store.dispatch(AuthActions.login({ username, password }));
+  login(username: string, password: string, redirectTo: string | null) {
+    this.store.dispatch(AuthActions.login({ username, password, redirectTo }));
   }
 
   checkAuthentication() {

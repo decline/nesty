@@ -10,10 +10,11 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule, authRootPath } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home.component';
 import { NotFoundComponent } from './not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, NotFoundComponent],
+  declarations: [AppComponent, HomeComponent, NotFoundComponent],
   imports: [
     CommonModule,
     BrowserModule,
