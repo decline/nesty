@@ -14,7 +14,7 @@
             "depConstraints": [
               {
                 "sourceTag": "type:api",
-                "onlyDependOnLibsWithTags": ["type:api"]
+                "onlyDependOnLibsWithTags": ["type:api", "type:interfaces"]
               },
               {
                 "sourceTag": "type:feature",
@@ -22,12 +22,13 @@
                   "type:feature",
                   "type:data-access",
                   "type:ui",
-                  "type:utility"
+                  "type:utility",
+                  "type:interfaces"
                 ]
               },
               {
                 "sourceTag": "type:data-access",
-                "onlyDependOnLibsWithTags": ["type:data-access", "type:utility"]
+                "onlyDependOnLibsWithTags": ["type:data-access", "type:utility", "type:interfaces"]
               },
               {
                 "sourceTag": "type:ui",
@@ -38,20 +39,16 @@
                 "onlyDependOnLibsWithTags": ["type:utility"]
               },
               {
+                "sourceTag": "type:interfaces",
+                "onlyDependOnLibsWithTags": ["type:interfaces"]
+              },
+              {
                 "sourceTag": "scope:app",
                 "onlyDependOnLibsWithTags": ["*"]
               },
               {
                 "sourceTag": "scope:auth",
-                "onlyDependOnLibsWithTags": [
-                  "scope:auth",
-                  "scope:shared",
-                  "scope:user"
-                ]
-              },
-              {
-                "sourceTag": "scope:shared",
-                "onlyDependOnLibsWithTags": ["scope:shared"]
+                "onlyDependOnLibsWithTags": ["scope:auth", "scope:shared", "scope:user"]
               },
               {
                 "sourceTag": "scope:user",
