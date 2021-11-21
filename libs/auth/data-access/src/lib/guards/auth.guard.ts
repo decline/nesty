@@ -18,6 +18,8 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    this.authFacade.checkAuthentication();
+
     return this.authFacade.authenticated$.pipe(
       filter((authenticated) => authenticated !== null && authenticated !== undefined),
       map((authenticated) => (authenticated ? true : this.router.createUrlTree([this.authRootPath, 'login'])))

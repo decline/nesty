@@ -17,6 +17,10 @@ export class AuthFacade {
     this.store.dispatch(AuthActions.login({ username, password }));
   }
 
+  checkAuthentication() {
+    this.store.dispatch(AuthActions.checkAuthentication());
+  }
+
   revokeAuthentication() {
     this.store.dispatch(AuthActions.revokeAuthentication());
   }

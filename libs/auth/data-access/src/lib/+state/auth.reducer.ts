@@ -24,6 +24,8 @@ const authReducer = createReducer(
   on(AuthActions.login, (state) => ({ ...state, authenticating: true })),
   on(AuthActions.loginSuccess, (state, { jwt }) => ({ ...state, authenticated: true, authenticating: false, jwt })),
   on(AuthActions.loginFailure, (state, { error }) => ({ ...state, authenticating: false, error })),
+  on(AuthActions.infoSuccess, (state) => ({ ...state, authenticated: true })),
+  on(AuthActions.infoFailure, (state) => ({ ...state, authenticated: false })),
   on(AuthActions.revokeAuthentication, (state) => ({ ...state, authenticated: false }))
 );
 
