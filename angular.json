@@ -99,6 +99,29 @@
       },
       "tags": ["type:data-access", "scope:auth"]
     },
+    "auth-feature": {
+      "projectType": "library",
+      "root": "libs/auth/feature",
+      "sourceRoot": "libs/auth/feature/src",
+      "prefix": "angular-nest",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/auth/feature"],
+          "options": {
+            "jestConfig": "libs/auth/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/auth/feature/src/**/*.ts", "libs/auth/feature/src/**/*.html"]
+          }
+        }
+      },
+      "tags": ["type:feature", "scope:auth"]
+    },
     "auth-interfaces": {
       "root": "libs/auth/interfaces",
       "sourceRoot": "libs/auth/interfaces/src",
