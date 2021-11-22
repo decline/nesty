@@ -1,5 +1,5 @@
-import { JwtPayload } from '@angular-nest/auth/interfaces';
-import { User } from '@angular-nest/user/api';
+import { JwtPayload } from '@nesty/auth/interfaces';
+import { User } from '@nesty/user/api';
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';

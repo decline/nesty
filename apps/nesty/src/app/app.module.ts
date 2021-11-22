@@ -1,5 +1,5 @@
-import { AuthDataAccessModule } from '@angular-nest/auth/data-access';
-import { LocalStorageService, SharedDataAccessModule } from '@angular-nest/shared/data-access';
+import { AuthDataAccessModule } from '@nesty/auth/data-access';
+import { LocalStorageService, SharedDataAccessModule } from '@nesty/shared/data-access';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';

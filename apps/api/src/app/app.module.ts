@@ -1,5 +1,5 @@
-import { AuthApiModule } from '@angular-nest/auth/api';
-import { UserApiModule } from '@angular-nest/user/api';
+import { AuthApiModule } from '@nesty/auth/api';
+import { UserApiModule } from '@nesty/user/api';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';

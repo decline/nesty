@@ -1,5 +1,5 @@
 {
-  "npmScope": "angular-nest",
+  "npmScope": "nesty",
   "affected": {
     "defaultBase": "main"
   },

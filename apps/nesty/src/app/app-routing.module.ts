@@ -1,4 +1,4 @@
-import { AuthGuard } from '@angular-nest/auth/data-access';
+import { AuthGuard } from '@nesty/auth/data-access';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: authRootPath,
-    loadChildren: () => import('@angular-nest/auth/feature').then((m) => m.AuthFeatureModule),
+    loadChildren: () => import('@nesty/auth/feature').then((m) => m.AuthFeatureModule),
   },
   { path: '**', component: NotFoundComponent },
 ];

@@ -1,5 +1,5 @@
-import { JwtLoginResponse, JwtPayload } from '@angular-nest/auth/interfaces';
-import { User, UserService } from '@angular-nest/user/api';
+import { JwtLoginResponse, JwtPayload } from '@nesty/auth/interfaces';
+import { User, UserService } from '@nesty/user/api';
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 

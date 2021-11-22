@@ -1,4 +1,4 @@
-import { JwtLoginResponse } from '@angular-nest/auth/interfaces';
+import { JwtLoginResponse } from '@nesty/auth/interfaces';
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

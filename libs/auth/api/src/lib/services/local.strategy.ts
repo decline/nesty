@@ -1,4 +1,4 @@
-import { User } from '@angular-nest/user/api';
+import { User } from '@nesty/user/api';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-local';

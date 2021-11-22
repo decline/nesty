@@ -1,4 +1,4 @@
-import { StorageService } from '@angular-nest/shared/data-access';
+import { StorageService } from '@nesty/shared/data-access';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';

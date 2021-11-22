@@ -1,4 +1,4 @@
-import { User } from '@angular-nest/user/api';
+import { User } from '@nesty/user/api';
 import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import { Public } from '../constants';
 import { AuthService } from '../services/auth.service';

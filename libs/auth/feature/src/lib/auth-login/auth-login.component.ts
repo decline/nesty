@@ -1,9 +1,9 @@
-import { AuthFacade, queryParamRedirectToAfterLogin } from '@angular-nest/auth/data-access';
+import { AuthFacade, queryParamRedirectToAfterLogin } from '@nesty/auth/data-access';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'angular-nest-auth-login',
+  selector: 'nesty-auth-login',
   templateUrl: './auth-login.component.html',
   styleUrls: ['./auth-login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

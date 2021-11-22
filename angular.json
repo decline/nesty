@@ -80,7 +80,7 @@
       "projectType": "library",
       "root": "libs/auth/data-access",
       "sourceRoot": "libs/auth/data-access/src",
-      "prefix": "angular-nest",
+      "prefix": "nesty",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -103,7 +103,7 @@
       "projectType": "library",
       "root": "libs/auth/feature",
       "sourceRoot": "libs/auth/feature/src",
-      "prefix": "angular-nest",
+      "prefix": "nesty",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -141,7 +141,7 @@
       "projectType": "application",
       "root": "apps/nesty",
       "sourceRoot": "apps/nesty/src",
-      "prefix": "angular-nest",
+      "prefix": "nesty",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -261,7 +261,7 @@
       "projectType": "library",
       "root": "libs/shared/data-access",
       "sourceRoot": "libs/shared/data-access/src",
-      "prefix": "angular-nest",
+      "prefix": "nesty",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
