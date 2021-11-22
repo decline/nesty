@@ -32,6 +32,10 @@ export class AuthDataAccessModule {
           provide: AUTH_ROOT_PATH,
           useValue: authRootPath,
         },
+        {
+          provide: Storage,
+          useValue: localStorage,
+        },
       ],
     };
   }

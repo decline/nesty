@@ -35,7 +35,7 @@ export class AuthEffects {
         ofType(AuthActions.loginSuccess),
         tap(async (action) => {
           // store token in storage
-          localStorage.setItem(this.tokenStorageKey, action.jwt);
+          this.storage.setItem(this.tokenStorageKey, action.jwt);
 
           // when redirect param was set, navigate to return url
           if (action.redirectTo) {
@@ -49,7 +49,7 @@ export class AuthEffects {
   checkAuthentication$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.checkAuthentication),
-      map(() => localStorage.getItem(this.tokenStorageKey)),
+      map(() => this.storage.getItem(this.tokenStorageKey)),
       map((jwt) => {
         if (jwt) {
           return AuthActions.info({ jwt });
@@ -72,5 +72,10 @@ export class AuthEffects {
     )
   );
 
-  constructor(private readonly actions$: Actions, private authHttpService: AuthHttpService, private router: Router) {}
+  constructor(
+    private readonly actions$: Actions,
+    private authHttpService: AuthHttpService,
+    private router: Router,
+    private storage: Storage
+  ) {}
 }
