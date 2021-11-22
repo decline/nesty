@@ -21,7 +21,7 @@ export class AuthEffects {
             .pipe(
               map((response) => AuthActions.loginSuccess({ jwt: response.accessToken, redirectTo: action.redirectTo }))
             ),
-        onError: (action, error) => {
+        onError: (_action, error) => {
           console.error('Error', error);
           return AuthActions.loginFailure({ error });
         },
@@ -64,7 +64,7 @@ export class AuthEffects {
       ofType(AuthActions.info),
       fetch({
         run: () => this.authHttpService.info().pipe(map((response) => AuthActions.infoSuccess({ user: response }))),
-        onError: (action, error) => {
+        onError: (_action, error) => {
           console.error('Error', error);
           return AuthActions.infoFailure({ error });
         },

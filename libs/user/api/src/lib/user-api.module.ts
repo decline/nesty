@@ -12,15 +12,15 @@ import { UserSubscriber } from './subscribers/user.subscriber';
   exports: [UserService],
 })
 export class UserApiModule {
-  constructor(private userService: UserService) {
-    // const user = new User();
-    // user.userName = 'decline';
-    // user.password = 'test';
-    // user.firstName = 'Dominik';
-    // user.lastName = 'Huppmann';
-    //
-    // userService.create(user);
-    //
-    // userService.findAll().then((users) => console.log('All users:', users));
-  }
+  // constructor(private userService: UserService) {
+  // const user = new User();
+  // user.userName = 'decline';
+  // user.password = 'test';
+  // user.firstName = 'Dominik';
+  // user.lastName = 'Huppmann';
+  //
+  // userService.create(user);
+  //
+  // userService.findAll().then((users) => console.log('All users:', users));
+  // }
 }
