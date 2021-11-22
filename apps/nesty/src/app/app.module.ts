@@ -1,5 +1,5 @@
 import { AuthDataAccessModule } from '@angular-nest/auth/data-access';
-import { SharedDataAccessModule } from '@angular-nest/shared/data-access';
+import { LocalStorageService, SharedDataAccessModule } from '@angular-nest/shared/data-access';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,9 +18,12 @@ import { NotFoundComponent } from './not-found.component';
     AppRoutingModule,
     AuthDataAccessModule.forRoot(authRootPath),
     SharedDataAccessModule.forRoot({
-      maxAge: 25, // Retains last 25 states
-      logOnly: environment.production, // Restrict extension to log-only mode
-      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+      storage: LocalStorageService,
+      storeDevtoolsOptions: {
+        maxAge: 25, // Retains last 25 states
+        logOnly: environment.production, // Restrict extension to log-only mode
+        autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+      },
     }),
   ],
   providers: [],

@@ -1,10 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule, Type } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { INITIAL_OPTIONS, StoreDevtoolsModule, StoreDevtoolsOptions } from '@ngrx/store-devtools';
 import { CustomRouteSerializer } from './ngrx/custom-route-serializer';
+import { StorageService } from './storage/storage.service';
+
+interface Config {
+  storage: Type<StorageService>;
+  storeDevtoolsOptions: StoreDevtoolsOptions;
+}
 
 @NgModule({
   imports: [
@@ -16,13 +22,17 @@ import { CustomRouteSerializer } from './ngrx/custom-route-serializer';
   ],
 })
 export class SharedDataAccessModule {
-  static forRoot(storeDevtoolsOptions: StoreDevtoolsOptions): ModuleWithProviders<SharedDataAccessModule> {
+  static forRoot(config: Config): ModuleWithProviders<SharedDataAccessModule> {
     return {
       ngModule: SharedDataAccessModule,
       providers: [
         {
           provide: INITIAL_OPTIONS,
-          useValue: storeDevtoolsOptions,
+          useValue: config.storeDevtoolsOptions,
+        },
+        {
+          provide: StorageService,
+          useClass: config.storage,
         },
       ],
     };

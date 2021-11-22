@@ -1,3 +1,4 @@
+import { StorageService } from '@angular-nest/shared/data-access';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -35,7 +36,7 @@ export class AuthEffects {
         ofType(AuthActions.loginSuccess),
         tap(async (action) => {
           // store token in storage
-          this.storage.setItem(this.tokenStorageKey, action.jwt);
+          this.storageService.setItem(this.tokenStorageKey, action.jwt);
 
           // when redirect param was set, navigate to return url
           if (action.redirectTo) {
@@ -49,7 +50,7 @@ export class AuthEffects {
   checkAuthentication$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.checkAuthentication),
-      map(() => this.storage.getItem(this.tokenStorageKey)),
+      map(() => this.storageService.getItem(this.tokenStorageKey)),
       map((jwt) => {
         if (jwt) {
           return AuthActions.info({ jwt });
@@ -76,6 +77,6 @@ export class AuthEffects {
     private readonly actions$: Actions,
     private authHttpService: AuthHttpService,
     private router: Router,
-    private storage: Storage
+    private storageService: StorageService
   ) {}
 }
