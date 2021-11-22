@@ -15,11 +15,11 @@ export class UserService {
     return this.usersRepository.find();
   }
 
-  findOne(id: string): Promise<User> {
+  findOne(id: string): Promise<User | undefined> {
     return this.usersRepository.findOne(id);
   }
 
-  findOneByUsernameAndPassword(userName: string, password: string): Promise<User> {
+  findOneByUsernameAndPassword(userName: string, password: string): Promise<User | undefined> {
     return this.usersRepository.findOne({
       where: <User>{ userName, password },
     });

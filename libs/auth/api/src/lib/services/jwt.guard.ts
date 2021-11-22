@@ -10,7 +10,7 @@ export class JwtGuard extends AuthGuard(JWT_STRATEGY_NAME) {
     super();
   }
 
-  canActivate(context: ExecutionContext) {
+  override canActivate(context: ExecutionContext) {
     const isPublic = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC_KEY, [
       context.getHandler(),
       context.getClass(),
@@ -25,7 +25,7 @@ export class JwtGuard extends AuthGuard(JWT_STRATEGY_NAME) {
     return super.canActivate(context);
   }
 
-  handleRequest(err, user, info) {
+  override handleRequest<User>(err: unknown, user: User) {
     // You can throw an exception based on either "info" or "err" arguments
     if (err || !user) {
       throw err || new UnauthorizedException();

@@ -1,7 +1,9 @@
+import { User } from '@angular-nest/user/api';
 import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import { Public } from '../constants';
 import { AuthService } from '../services/auth.service';
 import { LocalGuard } from '../services/local.guard';
+import { Request as Req } from 'express';
 
 @Controller('auth')
 export class AuthController {
@@ -10,12 +12,12 @@ export class AuthController {
   @Public()
   @UseGuards(LocalGuard)
   @Post('login')
-  async login(@Request() req) {
-    return this.authService.login(req.user);
+  async login(@Request() req: Req) {
+    return this.authService.login(req.user as User);
   }
 
   @Get('info')
-  getProfile(@Request() req) {
+  getProfile(@Request() req: Req) {
     return req.user;
   }
 }
