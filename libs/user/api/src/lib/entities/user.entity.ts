@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: string | undefined;
 
   @Column()
   userName: string;
@@ -20,8 +20,7 @@ export class User {
   @Column({ default: true })
   isActive: boolean;
 
-  constructor(id: string, userName: string, password: string, firstName: string, lastName: string, isActive: boolean) {
-    this.id = id;
+  constructor(userName: string, password: string, firstName: string, lastName: string, isActive = true) {
     this.userName = userName;
     this.password = password;
     this.firstName = firstName;
