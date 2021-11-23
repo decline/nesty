@@ -32,6 +32,7 @@
       "@nesty/auth/feature": ["libs/auth/feature/src/index.ts"],
       "@nesty/auth/interfaces": ["libs/auth/interfaces/src/index.ts"],
       "@nesty/shared/data-access": ["libs/shared/data-access/src/index.ts"],
+      "@nesty/shared/interfaces": ["libs/shared/interfaces/src/index.ts"],
       "@nesty/user/api": ["libs/user/api/src/index.ts"]
     }
   },
