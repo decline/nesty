@@ -257,6 +257,29 @@
       "tags": ["scope:e2e"],
       "implicitDependencies": ["nesty"]
     },
+    "shared-api": {
+      "root": "libs/shared/api",
+      "sourceRoot": "libs/shared/api/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/shared/api/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/api"],
+          "options": {
+            "jestConfig": "libs/shared/api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": ["type:api", "scope:shared"]
+    },
     "shared-data-access": {
       "projectType": "library",
       "root": "libs/shared/data-access",

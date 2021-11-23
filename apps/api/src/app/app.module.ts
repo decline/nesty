@@ -1,4 +1,5 @@
 import { AuthApiModule } from '@nesty/auth/api';
+import { SharedApiModule } from '@nesty/shared/api';
 import { UserApiModule } from '@nesty/user/api';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -18,6 +19,7 @@ import { AppService } from './app.service';
       }),
     }),
     AuthApiModule,
+    SharedApiModule,
     UserApiModule,
   ],
   controllers: [AppController],
