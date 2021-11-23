@@ -1,8 +1,8 @@
-import { User as UserInterface } from '@nesty/user/interfaces';
+import { User } from '@nesty/user/interfaces';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
-export class User implements UserInterface {
+@Entity({ name: 'user' })
+export class UserEntity implements User<string | undefined> {
   @PrimaryGeneratedColumn('uuid')
   id: string | undefined;
 
@@ -27,5 +27,15 @@ export class User implements UserInterface {
     this.firstName = firstName;
     this.lastName = lastName;
     this.isActive = isActive;
+  }
+
+  public static convertToUser(user: UserEntity): User {
+    return {
+      id: user.id as string,
+      userName: user.userName,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      isActive: user.isActive,
+    };
   }
 }

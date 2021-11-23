@@ -1,6 +1,10 @@
 export interface JwtPayload {
   sub: string;
-  username: string;
+  id: string;
+  userName: string;
+  firstName: string;
+  lastName: string;
+  isActive: boolean;
 }
 
 export interface JwtLoginResponse {

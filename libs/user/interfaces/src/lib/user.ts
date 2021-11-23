@@ -1,7 +1,6 @@
-export interface User {
-  id: string;
+export interface User<I = string> {
+  id: I;
   userName: string;
-  password: string;
   firstName: string;
   lastName: string;
   isActive: boolean;

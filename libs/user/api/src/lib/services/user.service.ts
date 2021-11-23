@@ -1,27 +1,27 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Connection, Repository } from 'typeorm';
-import { User } from '../entities/user.entity';
+import { UserEntity } from '../entities/user.entity';
 
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(User)
-    private usersRepository: Repository<User>,
+    @InjectRepository(UserEntity)
+    private usersRepository: Repository<UserEntity>,
     private connection: Connection
   ) {}
 
-  findAll(): Promise<User[]> {
+  findAll(): Promise<UserEntity[]> {
     return this.usersRepository.find();
   }
 
-  findOne(id: string): Promise<User | undefined> {
+  findOne(id: string): Promise<UserEntity | undefined> {
     return this.usersRepository.findOne(id);
   }
 
-  findOneByUsernameAndPassword(userName: string, password: string): Promise<User | undefined> {
+  findOneByUsernameAndPassword(userName: string, password: string): Promise<UserEntity | undefined> {
     return this.usersRepository.findOne({
-      where: <User>{ userName, password },
+      where: <UserEntity>{ userName, password },
     });
   }
 
@@ -29,7 +29,7 @@ export class UserService {
     await this.usersRepository.delete(id);
   }
 
-  async create(user: User) {
+  async create(user: UserEntity) {
     const queryRunner = this.connection.createQueryRunner();
 
     await queryRunner.connect();
@@ -47,7 +47,7 @@ export class UserService {
     }
   }
 
-  async createSimple(user: User) {
+  async createSimple(user: UserEntity) {
     await this.connection.transaction(async (manager) => {
       await manager.save(user);
     });

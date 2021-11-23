@@ -1,7 +1,8 @@
-import { JwtLoginResponse, JwtPayload } from '@nesty/auth/interfaces';
-import { User, UserService } from '@nesty/user/api';
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { JwtLoginResponse, JwtPayload } from '@nesty/auth/interfaces';
+import { UserEntity, UserService } from '@nesty/user/api';
+import { User } from '@nesty/user/interfaces';
 
 @Injectable()
 export class AuthService {
@@ -10,15 +11,22 @@ export class AuthService {
   async validateUser(username: string, pass: string): Promise<User | null> {
     const user = await this.userService.findOneByUsernameAndPassword(username, pass);
     if (user && user.password === pass) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { password, ...result } = user;
-      return result as User;
+      return UserEntity.convertToUser(user);
     }
     return null;
   }
 
   login(user: User): JwtLoginResponse {
-    const payload: JwtPayload = { username: user.userName, sub: user.id as string };
+    // create the payload for the JWT
+    const payload: JwtPayload = {
+      sub: user.id as string,
+      id: user.id,
+      userName: user.userName,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      isActive: user.isActive,
+    };
+
     return {
       accessToken: this.jwtService.sign(payload),
     };

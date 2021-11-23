@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { JwtLoginResponse } from '@nesty/auth/interfaces';
-import { User } from '@nesty/user/api';
+import { User } from '@nesty/user/interfaces';
 import { Request } from 'express';
 import { Public } from '../constants';
 import { AuthService } from '../services/auth.service';
@@ -18,7 +18,7 @@ export class AuthController {
   }
 
   @Get('info')
-  getProfile(@Req() req: Request): User {
+  getInfo(@Req() req: Request): User {
     return req.user as User;
   }
 }
