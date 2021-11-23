@@ -34,7 +34,8 @@
       "@nesty/shared/api": ["libs/shared/api/src/index.ts"],
       "@nesty/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@nesty/shared/interfaces": ["libs/shared/interfaces/src/index.ts"],
-      "@nesty/user/api": ["libs/user/api/src/index.ts"]
+      "@nesty/user/api": ["libs/user/api/src/index.ts"],
+      "@nesty/user/interfaces": ["libs/user/interfaces/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

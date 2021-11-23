@@ -348,6 +348,29 @@
         }
       },
       "tags": ["type:api", "scope:user"]
+    },
+    "user-interfaces": {
+      "root": "libs/user/interfaces",
+      "sourceRoot": "libs/user/interfaces/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/user/interfaces/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/user/interfaces"],
+          "options": {
+            "jestConfig": "libs/user/interfaces/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": ["type:interfaces", "scope:user"]
     }
   }
 }

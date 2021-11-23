@@ -65,7 +65,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.info),
       fetch({
-        run: () => this.authHttpService.info().pipe(map((response) => AuthActions.infoSuccess({ user: response }))),
+        run: () => this.authHttpService.info().pipe(map((user) => AuthActions.infoSuccess({ user }))),
         onError: (_action, error: Error) => {
           console.error('Error', error);
           return AuthActions.infoFailure({ error });

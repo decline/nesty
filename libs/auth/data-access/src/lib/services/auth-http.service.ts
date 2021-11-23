@@ -1,6 +1,7 @@
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtLoginResponse } from '@nesty/auth/interfaces';
+import { User } from '@nesty/user/interfaces';
 import { Observable } from 'rxjs';
 import { HANDLE_AUTHENTICATION_FAILURE } from '../interceptor/auth.interceptor';
 
@@ -18,7 +19,7 @@ export class AuthHttpService {
     );
   }
 
-  info(): Observable<unknown> {
-    return this.http.get<unknown>('/api/auth/info');
+  info(): Observable<User> {
+    return this.http.get<User>('/api/auth/info');
   }
 }

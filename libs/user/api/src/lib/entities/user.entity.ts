@@ -1,7 +1,8 @@
+import { User as UserInterface } from '@nesty/user/interfaces';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class User {
+export class User implements UserInterface {
   @PrimaryGeneratedColumn('uuid')
   id: string | undefined;
 
