@@ -1,6 +1,6 @@
-import { JwtLoginResponse } from '@nesty/auth/interfaces';
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { JwtLoginResponse } from '@nesty/auth/interfaces';
 import { Observable } from 'rxjs';
 import { HANDLE_AUTHENTICATION_FAILURE } from '../interceptor/auth.interceptor';
 
