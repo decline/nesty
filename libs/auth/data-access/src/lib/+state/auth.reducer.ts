@@ -1,3 +1,4 @@
+import { Error } from '@nesty/shared/interfaces';
 import { Action, createReducer, on } from '@ngrx/store';
 
 import * as AuthActions from './auth.actions';
@@ -8,7 +9,7 @@ export interface State {
   authenticated?: boolean; // if user is authenticated
   authenticating: boolean; // if authentication is in progress
   jwt?: string;
-  error?: string | null; // last known error (if any)
+  error?: Error | null; // last known error (if any)
 }
 
 export interface AuthPartialState {
@@ -26,7 +27,7 @@ const authReducer = createReducer(
   on(AuthActions.loginFailure, (state, { error }) => ({ ...state, authenticating: false, error })),
   on(AuthActions.info, (state, { jwt }) => ({ ...state, jwt })),
   on(AuthActions.infoSuccess, (state) => ({ ...state, authenticated: true })),
-  on(AuthActions.infoFailure, (state) => ({ ...state, authenticated: false })),
+  on(AuthActions.infoFailure, (state, { error }) => ({ ...state, authenticated: false, error })),
   on(AuthActions.revokeAuthentication, (state) => ({ ...state, authenticated: false }))
 );
 

@@ -1,1 +1,1 @@
-export { HttpResponseError } from './lib/http';
+export { Error } from './lib/error';

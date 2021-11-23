@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ModuleWithProviders, NgModule, Type } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { INITIAL_OPTIONS, StoreDevtoolsModule, StoreDevtoolsOptions } from '@ngrx/store-devtools';
+import { ErrorInterceptor } from './interceptor/error.interceptor';
 import { CustomRouteSerializer } from './ngrx/custom-route-serializer';
 import { StorageService } from './storage/storage.service';
 
@@ -19,6 +21,13 @@ interface Config {
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot({ serializer: CustomRouteSerializer }),
     StoreDevtoolsModule.instrument(),
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: ErrorInterceptor,
+    },
   ],
 })
 export class SharedDataAccessModule {

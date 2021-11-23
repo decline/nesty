@@ -1,6 +1,7 @@
-import { StorageService } from '@nesty/shared/data-access';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from '@nesty/shared/data-access';
+import { Error } from '@nesty/shared/interfaces';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import { map, tap } from 'rxjs';
@@ -22,7 +23,7 @@ export class AuthEffects {
             .pipe(
               map((response) => AuthActions.loginSuccess({ jwt: response.accessToken, redirectTo: action.redirectTo }))
             ),
-        onError: (_action, error) => {
+        onError: (_action, error: Error) => {
           console.error('Error', error);
           return AuthActions.loginFailure({ error });
         },
@@ -55,7 +56,7 @@ export class AuthEffects {
         if (jwt) {
           return AuthActions.info({ jwt });
         }
-        return AuthActions.infoFailure({ error: 'No token found in storage' });
+        return AuthActions.infoFailure({ error: { message: 'No token found in storage' } });
       })
     )
   );
@@ -65,7 +66,7 @@ export class AuthEffects {
       ofType(AuthActions.info),
       fetch({
         run: () => this.authHttpService.info().pipe(map((response) => AuthActions.infoSuccess({ user: response }))),
-        onError: (_action, error) => {
+        onError: (_action, error: Error) => {
           console.error('Error', error);
           return AuthActions.infoFailure({ error });
         },
