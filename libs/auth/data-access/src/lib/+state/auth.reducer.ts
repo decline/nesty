@@ -23,10 +23,16 @@ export const initialState: State = {
 const authReducer = createReducer(
   initialState,
   on(AuthActions.login, (state) => ({ ...state, authenticating: true })),
-  on(AuthActions.loginSuccess, (state, { jwt }) => ({ ...state, authenticated: true, authenticating: false, jwt })),
+  on(AuthActions.loginSuccess, (state, { jwt }) => ({
+    ...state,
+    authenticated: true,
+    authenticating: false,
+    jwt,
+    error: null,
+  })),
   on(AuthActions.loginFailure, (state, { error }) => ({ ...state, authenticating: false, error })),
   on(AuthActions.info, (state, { jwt }) => ({ ...state, jwt })),
-  on(AuthActions.infoSuccess, (state) => ({ ...state, authenticated: true })),
+  on(AuthActions.infoSuccess, (state) => ({ ...state, authenticated: true, error: null })),
   on(AuthActions.infoFailure, (state, { error }) => ({ ...state, authenticated: false, error })),
   on(AuthActions.revokeAuthentication, (state) => ({ ...state, authenticated: false }))
 );
