@@ -1,6 +1,7 @@
-import { AuthFacade, queryParamRedirectToAfterLogin } from '@nesty/auth/data-access';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { AuthFacade, queryParamRedirectToAfterLogin } from '@nesty/auth/data-access';
 
 @Component({
   selector: 'nesty-auth-login',
@@ -8,11 +9,27 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./auth-login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AuthLoginComponent implements OnInit {
-  constructor(private authFacade: AuthFacade, private activatedRoute: ActivatedRoute) {}
+export class AuthLoginComponent {
+  public formGroup: FormGroup;
+  private readonly redirectTo: string | null;
 
-  ngOnInit(): void {
-    const queryParams = this.activatedRoute.snapshot.queryParamMap;
-    this.authFacade.login('decline', 'test', queryParams.get(queryParamRedirectToAfterLogin));
+  constructor(private formBuilder: FormBuilder, private authFacade: AuthFacade, activatedRoute: ActivatedRoute) {
+    this.redirectTo = activatedRoute.snapshot.queryParamMap.get(queryParamRedirectToAfterLogin);
+
+    this.formGroup = this.formBuilder.group({
+      name: this.formBuilder.control('', [Validators.required]),
+      password: this.formBuilder.control('', [Validators.required]),
+    });
+  }
+
+  onSubmit() {
+    if (this.formGroup.invalid) {
+      return;
+    }
+
+    const name = this.formGroup.get('name')?.value;
+    const password = this.formGroup.get('password')?.value;
+
+    this.authFacade.login(name, password, this.redirectTo);
   }
 }
