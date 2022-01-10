@@ -154,7 +154,10 @@
             "tsConfig": "apps/nesty/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["apps/nesty/src/favicon.ico", "apps/nesty/src/assets"],
-            "styles": ["apps/nesty/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/nesty/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {

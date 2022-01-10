@@ -1,11 +1,11 @@
-import { AuthDataAccessModule } from '@nesty/auth/data-access';
-import { LocalStorageService, SharedDataAccessModule } from '@nesty/shared/data-access';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthDataAccessModule } from '@nesty/auth/data-access';
+import { LocalStorageService, SharedDataAccessModule } from '@nesty/shared/data-access';
 import { environment } from '../environments/environment';
 import { AppRoutingModule, authRootPath } from './app-routing.module';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 import { NotFoundComponent } from './not-found.component';
@@ -15,6 +15,7 @@ import { NotFoundComponent } from './not-found.component';
   imports: [
     CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AuthDataAccessModule.forRoot(authRootPath),
     SharedDataAccessModule.forRoot({
