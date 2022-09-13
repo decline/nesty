@@ -10,4 +10,10 @@ jobs:
           node-version: '16.13.0'
           cache: 'npm'
       - run: npm install
-      - run: npm run lint
+      - run: npm run ci:lint
+#      - run: npm run ci:test
+      - run: npm run ci:build
+      - name: Cache nx build
+        uses: actions/cache@v3
+        with:
+          path: /tmp/nx
