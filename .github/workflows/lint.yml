@@ -13,7 +13,7 @@ jobs:
       - run: npm run ci:lint
 #      - run: npm run ci:test
       - run: npm run ci:build
-      - name: Cache nx build
+      - name: Cache nx
         uses: actions/cache@v3
         with:
           path: /tmp/nx
