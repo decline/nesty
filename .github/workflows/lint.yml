@@ -17,3 +17,4 @@ jobs:
         uses: actions/cache@v3
         with:
           path: /tmp/nx
+          key: nx-cache
