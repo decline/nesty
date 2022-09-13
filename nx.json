@@ -19,7 +19,6 @@
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
         "cacheableOperations": ["build", "lint", "test", "e2e"],
-        "cacheDirectory": "/tmp/nx",
         "parallel": 1
       }
     }
